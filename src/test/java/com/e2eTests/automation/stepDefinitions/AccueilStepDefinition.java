@@ -3,6 +3,8 @@ package com.e2eTests.automation.stepDefinitions;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.e2eTests.automation.pageObjects.AccueilPage;
 import com.e2eTests.automation.util.Setup;
@@ -37,8 +39,33 @@ public class AccueilStepDefinition {
 	}
 
 	@Then("^Je verifie l affichage de la page PIM \"([^\"]*)\"$")
-	public void jeVerifieLAffichageDeLaPagePIM(String sub_menu_PIM) throws Throwable {
+	public void jeVerifieLAffichageDeLaPagePIM(String sub_menu_PIM) throws Throwable {	
 		String pagePIM = AccueilPage.pagePIM.getText();
+		//Thread.sleep(2000);
+		WebDriverWait wait = new WebDriverWait (driver, 20);
+		wait.until(ExpectedConditions.visibilityOf(AccueilPage.pagePIM));
 		Assert.assertTrue(pagePIM.contains(sub_menu_PIM));
 	}
+	
+	@When("^Je clique sur le module Admin$")
+	public void jeCliqueSurLeModuleAdmin() throws Throwable {
+	 accueilPage.goToAdmin();
+	}
+
+	@When("^Je saisie le username \"([^\"]*)\"$")
+	public void jeSaisieLeUsername(String username) throws Throwable {
+		accueilPage.fillUsername(username);
+	}
+
+	@When("^Je clique sur le boutton Search$")
+	public void jeCliqueSurLeBouttonSearch() throws Throwable {
+		accueilPage.clickSearch();
+	}
+
+	@Then("^Je verifie l affichage du message \"([^\"]*)\"$")
+	public void jeVerifieLAffichageDduMessage(String sub_message_admin) throws Throwable {
+		String messageAdmin = AccueilPage.messageAdmin.getText();
+		Assert.assertTrue(messageAdmin.contains(sub_message_admin));
+	}
+
 }

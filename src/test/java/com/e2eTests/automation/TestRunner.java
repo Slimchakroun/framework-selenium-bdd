@@ -13,10 +13,13 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+		//glue = {"stepDefinitions"},
 		features = {"src/specs/features"},
-		plugin = {"pretty", "html:target/cucumber-html-report", "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/OrangeHRM-report.html"},
+		plugin = {"pretty", "html:target/cucumber-html-report","json:target/cucumber.json","com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/OrangeHRM-report.html"},
 		snippets = SnippetType.CAMELCASE,
-		tags = {("@accueil")}
+		tags = {("@connexion")},
+		//tags = {("@accueil, @connexion")}
+		monochrome=true //console lisible: elimine les caracters non lisible
 		)
 public class TestRunner {
 

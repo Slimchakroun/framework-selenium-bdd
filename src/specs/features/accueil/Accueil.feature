@@ -17,4 +17,11 @@ Feature: Accueil - OrangeHRM
   @PIM
   Scenario: Acceder au module PIM
     When Je clique sur le module PIM
-    Then Je verifie l affichage de la page PIM "Configuration" 
+    Then Je verifie l affichage de la page PIM "Configuration"
+
+  @Admin
+  Scenario: Acceder au module Admin
+    When Je clique sur le module Admin
+    And Je saisie le username "Slim"
+    And Je clique sur le boutton Search
+    Then Je verifie l affichage du message "No Records Found"
