@@ -46,26 +46,4 @@ public class AccueilStepDefinition {
 		wait.until(ExpectedConditions.visibilityOf(AccueilPage.pagePIM));
 		Assert.assertTrue(pagePIM.contains(sub_menu_PIM));
 	}
-	
-	@When("^Je clique sur le module Admin$")
-	public void jeCliqueSurLeModuleAdmin() throws Throwable {
-	 accueilPage.goToAdmin();
-	}
-
-	@When("^Je saisie le username \"([^\"]*)\"$")
-	public void jeSaisieLeUsername(String username) throws Throwable {
-		accueilPage.fillUsername(username);
-	}
-
-	@When("^Je clique sur le boutton Search$")
-	public void jeCliqueSurLeBouttonSearch() throws Throwable {
-		accueilPage.clickSearch();
-	}
-
-	@Then("^Je verifie l affichage du message \"([^\"]*)\"$")
-	public void jeVerifieLAffichageDduMessage(String sub_message_admin) throws Throwable {
-		String messageAdmin = AccueilPage.messageAdmin.getText();
-		Assert.assertTrue(messageAdmin.contains(sub_message_admin));
-	}
-
 }

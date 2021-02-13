@@ -18,13 +18,13 @@ public class AuthentificationOutlinePage {
 	final static String RESET_PASSWORD_ID = "btnSearchValues";
 	final static String MESSAGE_VERIFICATION_RESET_XPATH = "//div[@class='message warning fadable']";
 	final static String WIDGET_LINKEDIN_XPATH = "//img[@alt='LinkedIn OrangeHRM group']";
-	final static String PAGE_LINKEDIN_ID = "linkedin-logo";
+	final static String PAGE_LINKEDIN_XPATH = "/html/body/div[1]/main/form/header/h1";
 	final static String WIDGET_FACEBOOK_XPATH = "//img[@alt='OrangeHRM on Facebook']";
-	final static String PAGE_FACEBOOK_XPATH = "//h2[@dir='auto']";
+	final static String PAGE_FACEBOOK_XPATH = "//div[@role='heading']";
 	final static String WIDGET_TWITTER_XPATH = "//img[@alt='OrangeHRM on twitter']";
-	final static String PAGE_TWITTER_XPATH = "//div[@dir='auto']";
+	final static String PAGE_TWITTER_XPATH = "//a[@role='tab']";
 	final static String WIDGET_YOUTUBE_XPATH = "//img[@alt='OrangeHRM on youtube']";
-	final static String PAGE_YOUTUBE_ID = "text";
+	final static String PAGE_YOUTUBE_ID = "logo-icon-container";
 
 	/* @FindBy */
 	@FindBy(how = How.ID, using = USER_NAME_ID)
@@ -49,15 +49,15 @@ public class AuthentificationOutlinePage {
 	public static WebElement messageVerificationReset;
 	@FindBy(how = How.XPATH, using = WIDGET_LINKEDIN_XPATH)
 	public static WebElement btnLinkedIn;
-	@FindBy(how = How.ID, using = PAGE_LINKEDIN_ID)
+	@FindBy(how = How.XPATH, using = PAGE_LINKEDIN_XPATH)
 	public static WebElement pageLinkedIn;
 	@FindBy(how = How.XPATH, using = WIDGET_FACEBOOK_XPATH)
 	public static WebElement btnFacebook;
-	@FindBy(how = How.ID, using = PAGE_FACEBOOK_XPATH)
+	@FindBy(how = How.XPATH, using = PAGE_FACEBOOK_XPATH)
 	public static WebElement pageFacebook;
 	@FindBy(how = How.XPATH, using = WIDGET_TWITTER_XPATH)
 	public static WebElement btnTwitter;
-	@FindBy(how = How.ID, using = PAGE_TWITTER_XPATH)
+	@FindBy(how = How.XPATH, using = PAGE_TWITTER_XPATH)
 	public static WebElement pageTwitter;
 	@FindBy(how = How.XPATH, using = WIDGET_YOUTUBE_XPATH)
 	public static WebElement btnYoutube;
@@ -92,11 +92,6 @@ public class AuthentificationOutlinePage {
 	public void clickWidgetLinkedIn() {
 		btnLinkedIn.click();
 	}
-	
-	public Boolean isPageLinkedinDisplayed(WebElement element) {
-		Boolean isPageLinkedinDisplayed = element.isDisplayed();
-		return isPageLinkedinDisplayed;
-		}
 	
 	public void clickWidgetFacebook() {
 		btnFacebook.click();

@@ -3,6 +3,8 @@ package com.e2eTests.automation.stepDefinitions;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.e2eTests.automation.pageObjects.AccueilPage;
 import com.e2eTests.automation.pageObjects.AuthentificationOutlinePage;
@@ -95,8 +97,14 @@ public class AuthentificationOutlineStepDefinition {
 
 	@Then("^Redirection vers la page LinkedIn$")
 	public void redirectionVersLaPageLinkedIn() throws Throwable {
-		boolean elementText= authentificationOutlinePage.isPageLinkedinDisplayed(AuthentificationOutlinePage.pageLinkedIn);
-		Assert.assertTrue(elementText);
+		String parentHandle = driver.getWindowHandle();
+		for(String winHandle:driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle);
+		}
+		boolean linkedin = commonMethods.isElementDisplayed(AuthentificationOutlinePage.pageLinkedIn);
+		Assert.assertTrue(linkedin);
+		
+		driver.switchTo().window(parentHandle);
 	}
 
 	@When("^Je clique sur le widget Facebook$")
@@ -106,8 +114,14 @@ public class AuthentificationOutlineStepDefinition {
 
 	@Then("^Redirection vers la page Facebook$")
 	public void redirectionVersLaPageFacebook() throws Throwable {
-		String facebookPageMessage = AuthentificationOutlinePage.pageFacebook.getText();
-		Assert.assertTrue(facebookPageMessage.contains("OrangeHRM - World's Most Popular Opensource HRIS"));
+		String parentHandle = driver.getWindowHandle();
+		for(String winHandle:driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle);
+		}
+		boolean facebook = commonMethods.isElementDisplayed(AuthentificationOutlinePage.pageFacebook);
+		Assert.assertTrue(facebook);
+		
+		driver.switchTo().window(parentHandle);
 	}
 
 	@When("^Je clique sur le widget Twitter$")
@@ -117,8 +131,17 @@ public class AuthentificationOutlineStepDefinition {
 
 	@Then("^Redirection vers la page Twitter$")
 	public void redirectionVersLaPageTwitter() throws Throwable {
-		String twitterPageMessage = AuthentificationOutlinePage.pageTwitter.getText();
-		Assert.assertTrue(twitterPageMessage.contains("OrangeHRM Inc."));
+		Thread.sleep(2000);
+//		WebDriverWait wait = new WebDriverWait (driver, 20);
+//		wait.until(ExpectedConditions.visibilityOf(AuthentificationOutlinePage.pageTwitter));
+		String parentHandle = driver.getWindowHandle();
+		for(String winHandle:driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle);
+		}
+		boolean twitter = commonMethods.isElementDisplayed(AuthentificationOutlinePage.pageTwitter);
+		Assert.assertTrue(twitter);
+		
+		driver.switchTo().window(parentHandle);
 	}
 
 	@When("^Je clique sur le widget Youtube$")
@@ -128,8 +151,14 @@ public class AuthentificationOutlineStepDefinition {
 
 	@Then("^Redirection vers la page Youtube$")
 	public void redirectionVersLaPageYoutube() throws Throwable {
-		String youtubePageMessage = AuthentificationOutlinePage.pageYoutube.getText();
-		Assert.assertTrue(youtubePageMessage.contains("OrangeHRM Inc"));
+		String parentHandle = driver.getWindowHandle();
+		for(String winHandle:driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle);
+		}
+		boolean youtube = commonMethods.isElementDisplayed(AuthentificationOutlinePage.pageYoutube);
+		Assert.assertTrue(youtube);
+		
+		driver.switchTo().window(parentHandle);
 	}
 
 }

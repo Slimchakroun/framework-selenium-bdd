@@ -17,7 +17,7 @@ import cucumber.api.junit.Cucumber;
 		features = {"src/specs/features"},
 		plugin = {"pretty", "html:target/cucumber-html-report","json:target/cucumber.json","com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/OrangeHRM-report.html"},
 		snippets = SnippetType.CAMELCASE,
-		tags = {("@connexion")},
+		tags = {("@authentification ")},
 		//tags = {("@accueil, @connexion")}
 		monochrome=true //console lisible: elimine les caracters non lisible
 		)
